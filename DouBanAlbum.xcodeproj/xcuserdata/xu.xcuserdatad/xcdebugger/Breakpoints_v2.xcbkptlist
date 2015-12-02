@@ -6,32 +6,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DouBanAlbum/DBAMusicListViewController.m"
-            timestampString = "470739974.501705"
+            filePath = "DouBanAlbum/Network/DAO/DBAMusicListDAO.m"
+            timestampString = "470740999.845263"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "-requestMusicType:"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "-requestParam"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DouBanAlbum/Model/MCModel/MCModelDBManger.m"
-            timestampString = "470740022.897515"
+            filePath = "DouBanAlbum/Network/DataResult/DBAMusicListDataResult.m"
+            timestampString = "470741174.556902"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "-saveArray:"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "-validateResult:withError:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

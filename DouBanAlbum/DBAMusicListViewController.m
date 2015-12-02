@@ -87,6 +87,11 @@
         if (responseData){
             [_musicSummarys addObjectsFromArray:responseData];
         }
+        
+        if ([responseData count]){
+            _listDataResult.start += [responseData count];
+        }
+        
         if (status== DBADAORequestStatusSuccess){
             dispatch_async(dispatch_get_main_queue(), ^{
                 [_tableView reloadData];
@@ -138,6 +143,11 @@
 
 - (void)willBeginLoadMoreRefresh
 {
+    if (_listDataResult.total == _musicSummarys.count){
+        [_tableView footerEndRefreshing];
+        return;
+    }
+    
     [self requestMusicType:self.belongType];
 }
 

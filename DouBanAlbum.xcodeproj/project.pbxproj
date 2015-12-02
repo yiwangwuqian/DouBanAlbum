@@ -61,6 +61,7 @@
 		95F7334C1C0EDD790092A6B6 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F733421C0EDD790092A6B6 /* UIScrollView+MJExtension.m */; };
 		95F7334D1C0EDD790092A6B6 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F733441C0EDD790092A6B6 /* UIScrollView+MJRefresh.m */; };
 		95F7334E1C0EDD790092A6B6 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F733461C0EDD790092A6B6 /* UIView+MJExtension.m */; };
+		95F733511C0EF6480092A6B6 /* NSString+SQLEscape.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F733501C0EF6480092A6B6 /* NSString+SQLEscape.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -176,6 +177,8 @@
 		95F733441C0EDD790092A6B6 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		95F733451C0EDD790092A6B6 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		95F733461C0EDD790092A6B6 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		95F7334F1C0EF6480092A6B6 /* NSString+SQLEscape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SQLEscape.h"; sourceTree = "<group>"; };
+		95F733501C0EF6480092A6B6 /* NSString+SQLEscape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SQLEscape.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -435,6 +438,8 @@
 				95F7331F1C0EC8310092A6B6 /* MCModelProperty.m */,
 				95F733201C0EC8310092A6B6 /* MCModelSQLBuilder.h */,
 				95F733211C0EC8310092A6B6 /* MCModelSQLBuilder.m */,
+				95F7334F1C0EF6480092A6B6 /* NSString+SQLEscape.h */,
+				95F733501C0EF6480092A6B6 /* NSString+SQLEscape.m */,
 			);
 			path = MCModel;
 			sourceTree = "<group>";
@@ -532,6 +537,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95F7334C1C0EDD790092A6B6 /* UIScrollView+MJExtension.m in Sources */,
+				95F733511C0EF6480092A6B6 /* NSString+SQLEscape.m in Sources */,
 				95F7332E1C0EC8310092A6B6 /* MCModelMapUtil.m in Sources */,
 				95F732F31C0EB4D10092A6B6 /* DBAMusicListDataResult.m in Sources */,
 				95DE61761C0D7F2200C2D0B0 /* AFHTTPRequestOperation.m in Sources */,

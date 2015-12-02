@@ -9,6 +9,7 @@
 #import "MCModelSQLBuilder.h"
 #import "MCModelMapUtil.h"
 #import "MCModelProperty.h"
+#import "NSString+SQLEscape.h"
 
 @implementation MCModelSQLBuilder
 
@@ -103,7 +104,13 @@
         
         if (sqlType){
             [columnArray addObject:valueKey];
-            [valueArray addObject:[NSString stringWithFormat:@"'%@'",valueDictionary[valueKey]]];
+            
+            NSString *nowColumnValue = [NSString stringWithFormat:@"%@",valueDictionary[valueKey]];
+            if (nowColumnValue){
+                nowColumnValue = [nowColumnValue stringBySQLEscape];
+            }
+            nowColumnValue = [NSString stringWithFormat:@"'%@'",nowColumnValue];
+            [valueArray addObject:nowColumnValue];
         }
     }
     
