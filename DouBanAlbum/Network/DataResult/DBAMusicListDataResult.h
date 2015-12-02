@@ -10,6 +10,9 @@
 
 @interface DBAMusicListDataResult : DBADataResult
 
-@property (nonatomic,strong) NSMutableArray*    musicSummarys;
+@property (nonatomic,assign) NSInteger          total;//全部数量
+@property (nonatomic,assign) NSInteger          start;//请求的偏移量(offset)
+
+@property (nonatomic,strong) NSMutableArray*    musicSummarys;//每次请求成功后经过解析的数据
 
 @end

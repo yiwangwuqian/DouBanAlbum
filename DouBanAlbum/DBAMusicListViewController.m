@@ -19,6 +19,7 @@
     
     DBAMusicListDAO*            _listDAO;
     DBAMusicListDataResult*     _listDataResult;
+    NSMutableArray*             _musicSummarys;
 }
 @end
 
@@ -33,6 +34,7 @@
 {
     [super viewDidLoad];
     
+    [self initData];
     [self setupViews];
 }
 
@@ -62,6 +64,13 @@
     }
 }
 
+- (void)initData
+{
+    if (!_musicSummarys){
+        _musicSummarys = [[NSMutableArray alloc] init];
+    }
+}
+
 - (void)requestMusicType:(NSString *)type
 {
     NSDictionary *param = @{@"q":type};
@@ -74,10 +83,18 @@
     _listDAO.additionParam = param;
     
     [_listDAO requestWithSuccess:^(DBADAORequestStatus status, id responseData) {
-        _listDataResult.musicSummarys = responseData;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [_tableView reloadData];
-        });
+        
+        if (responseData){
+            [_musicSummarys addObjectsFromArray:responseData];
+        }
+        if (status== DBADAORequestStatusSuccess){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_tableView reloadData];
+                if (_tableView.footerRefreshing){
+                    [_tableView footerEndRefreshing];
+                }
+            });
+        }
     } failure:^(DBADAORequestStatus status, NSError *error) {
         NSLog(@"error:%@",[error localizedDescription]);
     }];
@@ -85,7 +102,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_listDataResult.musicSummarys count];
+    return [_musicSummarys count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -98,11 +115,11 @@
                                       reuseIdentifier:cellIdentifier];
     }
     
-    if (_listDataResult.musicSummarys.count < indexPath.row){
+    if (_musicSummarys.count < indexPath.row){
         return cell;
     }
     
-    DBAAlbumBriefModel *briefModel = [_listDataResult.musicSummarys objectAtIndex:indexPath.row];
+    DBAAlbumBriefModel *briefModel = [_musicSummarys objectAtIndex:indexPath.row];
     cell.textLabel.text = briefModel.title;
     cell.detailTextLabel.text = briefModel.author;
     if(briefModel.image){
@@ -121,9 +138,7 @@
 
 - (void)willBeginLoadMoreRefresh
 {
-    [_tableView performSelector:@selector(footerEndRefreshing)
-                     withObject:nil
-                     afterDelay:2.0];
+    [self requestMusicType:self.belongType];
 }
 
 @end

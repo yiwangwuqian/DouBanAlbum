@@ -20,6 +20,16 @@
         return nil;
     }
     
+    NSString *total = resultDictionary[@"total"];
+    if (total && [total integerValue]){
+        self.total = [total integerValue];
+    }
+    
+    NSString *start = resultDictionary[@"start"];
+    if (start && [start integerValue]){
+        self.start = [start integerValue];
+    }
+    
     NSMutableArray *albums = [[NSMutableArray alloc] init];
     for (NSDictionary *albumDictionary in musicArray){
         
