@@ -12,19 +12,23 @@
 
 - (NSString *)stringBySQLEscape
 {
-    NSString *result = nil;
+    __block NSString *result = [NSString stringWithString:self];
     
-    if ([self rangeOfString:@"\""].location!= NSNotFound){
-        
-        //
-        result = [NSString stringWithString:self];
-        
-    }else if ([self rangeOfString:@"'"].location!= NSNotFound){
-        result = [self stringByReplacingOccurrencesOfString:@"'"
-                                                 withString:@"''"];
-        
-    }else{
-        result = [NSString stringWithString:self];
+    static NSArray* targetArray = nil;
+    if (!targetArray){
+        targetArray = @[@"/",@"'",@"[",@"]",@"%",@"&",@"_",@"(",@")"];
+    }
+    static NSArray* replaceArray = nil;
+    if (!replaceArray){
+        replaceArray = @[@"//",@"''",@"/[",@"/]",@"/%",@"/&",@"/_",@"/(",@"/)"];
+    }
+    
+    for (NSString *target in targetArray){
+        if ([result rangeOfString:target].location!= NSNotFound){
+            result = [result stringByReplacingOccurrencesOfString:target
+                                                       withString:[replaceArray objectAtIndex:[targetArray indexOfObject:target]]];
+            
+        }
     }
     
     return result;

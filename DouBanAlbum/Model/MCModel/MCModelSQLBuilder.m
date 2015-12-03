@@ -105,8 +105,8 @@
         if (sqlType){
             [columnArray addObject:valueKey];
             
-            NSString *nowColumnValue = [NSString stringWithFormat:@"%@",valueDictionary[valueKey]];
-            if (nowColumnValue){
+            id __autoreleasing nowColumnValue = valueDictionary[valueKey];
+            if (nowColumnValue && [nowColumnValue respondsToSelector:@selector(stringBySQLEscape)]){
                 nowColumnValue = [nowColumnValue stringBySQLEscape];
             }
             nowColumnValue = [NSString stringWithFormat:@"'%@'",nowColumnValue];
@@ -182,6 +182,9 @@
         
         if (sqlType){
             id __autoreleasing value = [valueDictionary objectForKey:valueKey];
+            if (value && [value respondsToSelector:@selector(stringBySQLEscape)]){
+                value = [value stringBySQLEscape];
+            }
             [columnArray addObject:[NSString stringWithFormat:@"%@ = '%@'", valueKey, value]];
         }
     }

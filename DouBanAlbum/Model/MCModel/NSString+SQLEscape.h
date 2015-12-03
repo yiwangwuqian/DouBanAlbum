@@ -12,8 +12,4 @@
 
 - (NSString *)stringBySQLEscape;
 
-//- (NSString *)stringBySQLEscapeSingleQuote;
-//
-//- (NSString *)stringBySQLEscapeDoubleQuote;
-
 @end
