@@ -12,14 +12,17 @@
 #import "DBAAlbumBriefModel.h"
 #import "UIImageView+AFNetworking.h"
 #import "MJRefresh.h"
+#import "DBAMusicListCell.h"
+#import "DBAMusicListDataSource.h"
 
-@interface DBAMusicListViewController()<UITableViewDataSource,UITableViewDelegate>
+@interface DBAMusicListViewController()<UITableViewDelegate>
 {
     UITableView*                _tableView;
     
     DBAMusicListDAO*            _listDAO;
     DBAMusicListDataResult*     _listDataResult;
     NSMutableArray*             _musicSummarys;
+    DBAMusicListDataSource*     _tableDataSource;
 }
 @end
 
@@ -55,11 +58,14 @@
     if (!_tableView){
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds
                                                   style:UITableViewStylePlain];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_tableView addFooterWithTarget:self
                                  action:@selector(willBeginLoadMoreRefresh)];
+        
+        _tableDataSource = [[DBAMusicListDataSource alloc] init];
+        _tableDataSource.musicSummarys = _musicSummarys;
+        _tableView.delegate = self;
+        _tableView.dataSource = _tableDataSource;
         [self.view addSubview:_tableView];
     }
 }
@@ -103,37 +109,6 @@
     } failure:^(DBADAORequestStatus status, NSError *error) {
         NSLog(@"error:%@",[error localizedDescription]);
     }];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [_musicSummarys count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *cellIdentifier = @"cellIdentifier";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                      reuseIdentifier:cellIdentifier];
-    }
-    
-    if (_musicSummarys.count < indexPath.row){
-        return cell;
-    }
-    
-    DBAAlbumBriefModel *briefModel = [_musicSummarys objectAtIndex:indexPath.row];
-    cell.textLabel.text = briefModel.title;
-    cell.detailTextLabel.text = briefModel.author;
-    if(briefModel.image){
-        [cell.imageView setImageWithURL:[NSURL URLWithString:briefModel.image]];
-    }else{
-        cell.imageView.image = nil;
-    }
-    
-    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

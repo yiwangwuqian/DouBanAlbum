@@ -16,11 +16,13 @@
     
     static NSArray* targetArray = nil;
     if (!targetArray){
-        targetArray = @[@"/",@"'",@"[",@"]",@"%",@"&",@"_",@"(",@")"];
+        //        targetArray = @[@"/",@"'",@"[",@"]",@"%",@"&",@"_",@"(",@")"];
+        targetArray = @[@"'"];
     }
     static NSArray* replaceArray = nil;
     if (!replaceArray){
-        replaceArray = @[@"//",@"''",@"/[",@"/]",@"/%",@"/&",@"/_",@"/(",@"/)"];
+        //        replaceArray = @[@"//",@"''",@"/[",@"/]",@"/%",@"/&",@"/_",@"/(",@"/)"];
+        replaceArray = @[@"''"];
     }
     
     for (NSString *target in targetArray){

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9518DE541C1011E00056C6A6 /* DBAMusicListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9518DE531C1011E00056C6A6 /* DBAMusicListCell.m */; };
+		9518DE571C101D590056C6A6 /* DBATableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9518DE561C101D590056C6A6 /* DBATableViewDataSource.m */; };
+		9518DE5A1C101E000056C6A6 /* DBAMusicListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9518DE591C101E000056C6A6 /* DBAMusicListDataSource.m */; };
 		95D0B4061C0D9EF000DDF002 /* DBAMusicTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D0B4051C0D9EF000DDF002 /* DBAMusicTypeViewController.m */; };
 		95DE61481C0D7DF700C2D0B0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95DE61471C0D7DF700C2D0B0 /* SystemConfiguration.framework */; };
 		95DE614A1C0D7E0D00C2D0B0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95DE61491C0D7E0D00C2D0B0 /* MobileCoreServices.framework */; };
@@ -65,6 +68,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9518DE521C1011E00056C6A6 /* DBAMusicListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBAMusicListCell.h; sourceTree = "<group>"; };
+		9518DE531C1011E00056C6A6 /* DBAMusicListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBAMusicListCell.m; sourceTree = "<group>"; };
+		9518DE551C101D590056C6A6 /* DBATableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBATableViewDataSource.h; sourceTree = "<group>"; };
+		9518DE561C101D590056C6A6 /* DBATableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBATableViewDataSource.m; sourceTree = "<group>"; };
+		9518DE581C101E000056C6A6 /* DBAMusicListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBAMusicListDataSource.h; sourceTree = "<group>"; };
+		9518DE591C101E000056C6A6 /* DBAMusicListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBAMusicListDataSource.m; sourceTree = "<group>"; };
 		95D0B4041C0D9EF000DDF002 /* DBAMusicTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBAMusicTypeViewController.h; sourceTree = "<group>"; };
 		95D0B4051C0D9EF000DDF002 /* DBAMusicTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBAMusicTypeViewController.m; sourceTree = "<group>"; };
 		95DE61471C0D7DF700C2D0B0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -195,6 +204,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9518DE511C1011260056C6A6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9518DE521C1011E00056C6A6 /* DBAMusicListCell.h */,
+				9518DE531C1011E00056C6A6 /* DBAMusicListCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		95DE614B1C0D7E4F00C2D0B0 /* Macro */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +323,7 @@
 		95E1CE0B1C0D71A8004CF32B /* DouBanAlbum */ = {
 			isa = PBXGroup;
 			children = (
+				9518DE511C1011260056C6A6 /* View */,
 				95F732F71C0EC5E90092A6B6 /* Model */,
 				95DE61871C0D7F7600C2D0B0 /* Network */,
 				95DE614D1C0D7F2200C2D0B0 /* ThirdPart */,
@@ -315,8 +334,12 @@
 				95D0B4051C0D9EF000DDF002 /* DBAMusicTypeViewController.m */,
 				95F732F41C0EBEEE0092A6B6 /* DBAMusicListViewController.h */,
 				95F732F51C0EBEEE0092A6B6 /* DBAMusicListViewController.m */,
+				9518DE581C101E000056C6A6 /* DBAMusicListDataSource.h */,
+				9518DE591C101E000056C6A6 /* DBAMusicListDataSource.m */,
 				95E1CE291C0D738B004CF32B /* DBAMainViewController.h */,
 				95E1CE2A1C0D738B004CF32B /* DBAMainViewController.m */,
+				9518DE551C101D590056C6A6 /* DBATableViewDataSource.h */,
+				9518DE561C101D590056C6A6 /* DBATableViewDataSource.m */,
 				95E1CE1E1C0D71A9004CF32B /* Assets.xcassets */,
 				95E1CE231C0D71A9004CF32B /* Info.plist */,
 				95E1CE0C1C0D71A8004CF32B /* Supporting Files */,
@@ -552,6 +575,7 @@
 				95F733301C0EC8310092A6B6 /* MCModelSQLBuilder.m in Sources */,
 				95F7334A1C0EDD790092A6B6 /* MJRefreshFooterView.m in Sources */,
 				95F733261C0EC8310092A6B6 /* FMDatabase.m in Sources */,
+				9518DE571C101D590056C6A6 /* DBATableViewDataSource.m in Sources */,
 				95DE61791C0D7F2200C2D0B0 /* AFNetworkReachabilityManager.m in Sources */,
 				95DE617D1C0D7F2200C2D0B0 /* AFURLResponseSerialization.m in Sources */,
 				95DE617B1C0D7F2200C2D0B0 /* AFURLConnectionOperation.m in Sources */,
@@ -563,6 +587,7 @@
 				95F733291C0EC8310092A6B6 /* FMDatabaseQueue.m in Sources */,
 				95DE61851C0D7F2200C2D0B0 /* UIRefreshControl+AFNetworking.m in Sources */,
 				95F732F01C0EAEAE0092A6B6 /* DBADataResult.m in Sources */,
+				9518DE541C1011E00056C6A6 /* DBAMusicListCell.m in Sources */,
 				95D0B4061C0D9EF000DDF002 /* DBAMusicTypeViewController.m in Sources */,
 				95F733241C0EC8310092A6B6 /* FMDatabase+InMemoryOnDiskIO.m in Sources */,
 				95F7332F1C0EC8310092A6B6 /* MCModelProperty.m in Sources */,
@@ -580,6 +605,7 @@
 				95DE617E1C0D7F2200C2D0B0 /* AFURLSessionManager.m in Sources */,
 				95E1CE111C0D71A8004CF32B /* AppDelegate.m in Sources */,
 				95F732E91C0E91640092A6B6 /* DBABaseDAO.m in Sources */,
+				9518DE5A1C101E000056C6A6 /* DBAMusicListDataSource.m in Sources */,
 				95E1CE0E1C0D71A8004CF32B /* main.m in Sources */,
 				95F733281C0EC8310092A6B6 /* FMDatabasePool.m in Sources */,
 				95F7334D1C0EDD790092A6B6 /* UIScrollView+MJRefresh.m in Sources */,

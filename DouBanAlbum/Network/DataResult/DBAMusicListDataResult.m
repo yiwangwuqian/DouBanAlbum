@@ -93,7 +93,9 @@
         return;
     }
     
-    [[MCModelDBManger defaultManager] saveArray:result];
+    if ([result count]){
+        [[MCModelDBManger defaultManager] saveArray:result];
+    }
 }
 
 - (void)loadBufferDataWithCompletion:(DBADataResultLoadedBufferBlock)completion
