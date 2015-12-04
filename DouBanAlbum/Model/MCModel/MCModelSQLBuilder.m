@@ -144,6 +144,12 @@
     return SQL;
 }
 
+- (NSString *)selectAllSQLWith:(NSString *)aTableName
+{
+    NSString *SQL = [NSString stringWithFormat:@"SELECT * FROM %@", aTableName];
+    return SQL;
+}
+
 - (NSString *)updateSQLWith:(NSObject<MCModelTable> *)object
 {
     if (![object respondsToSelector:@selector(dictionary)]){

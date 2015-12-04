@@ -22,6 +22,11 @@
 - (id)querySingleWithObject:(NSObject<MCModelTable> *)object;
 
 /**
+ @brief query all row data.
+ */
+- (NSArray *)queryAll:(NSString *)aTableName withClass:(NSString *)className;
+
+/**
  @brief INSERT/UPDATE object conform to <MCModelTable>.
  */
 - (BOOL)saveObject:(NSObject<MCModelTable> *)object;

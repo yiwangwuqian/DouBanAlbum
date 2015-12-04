@@ -33,6 +33,12 @@
 - (NSString *)selectSingleRowSQLWith:(NSObject<MCModelTable> *)object;
 
 /**
+ @brief compose select all row sql.
+ @param table name.
+ */
+- (NSString *)selectAllSQLWith:(NSString *)aTableName;
+
+/**
  @brief compose update single row sql.
  @param object which contains update values;
  */

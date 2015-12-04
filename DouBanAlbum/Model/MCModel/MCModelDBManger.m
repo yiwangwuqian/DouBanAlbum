@@ -10,6 +10,7 @@
 #import "FMDB.h"
 #import "MCModelSQLBuilder.h"
 #import "FMResultSet+MCModel.h"
+#import <objc/runtime.h>
 
 NSString *const MCModelDBMangerSharedPath =  @"MCModel.db";
 
@@ -59,6 +60,35 @@ NSString *const MCModelDBMangerSharedPath =  @"MCModel.db";
     }];
     
     return returnObj;
+}
+
+- (NSArray *)queryAll:(NSString *)aTableName withClass:(NSString *)className
+{
+    Class objectsClass = NSClassFromString(className);
+    if (!objectsClass || !class_conformsToProtocol(objectsClass, NSProtocolFromString(@"MCModelTable"))){
+        return nil;
+    }
+    
+    __block NSMutableArray *allArray = [[NSMutableArray alloc] init];
+    
+    __weak __typeof(self)weakSelf = self;
+    [self.sharedDBQueue inDatabase:^(FMDatabase *db) {
+        if ([db tableExists:aTableName]){
+            FMResultSet *nowRS = [db executeQuery:[weakSelf selectAllSQLWith:aTableName]];
+            while (nowRS && [nowRS next]){
+                @autoreleasepool {
+                    
+                    id __autoreleasing object  = [[[objectsClass class] alloc] init];
+                    [nowRS mc_kvcMagic:object];
+                    [allArray addObject:object];
+                    
+                }
+            }
+            [nowRS close];
+        }
+    }];
+    
+    return allArray;
 }
 
 - (BOOL)saveObject:(NSObject<MCModelTable> *)object
@@ -284,6 +314,12 @@ NSString *const MCModelDBMangerSharedPath =  @"MCModel.db";
     }
     
     return ret;
+}
+
+- (NSString *)selectAllSQLWith:(NSString *)aTableName
+{
+    NSString *SQL = [[MCModelSQLBuilder defaultBuilder] selectAllSQLWith:aTableName];
+    return SQL;
 }
 
 @end
